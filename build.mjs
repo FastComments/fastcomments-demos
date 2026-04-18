@@ -23,6 +23,12 @@ const LIBS = [
     { slug: 'nextjs',   repo: 'fastcomments-nextjs' },
 ];
 
+// Make every nested `npm ci` retry transient registry errors (ECONNRESET etc).
+// Inherited by all child processes via env.
+process.env.npm_config_fetch_retries = process.env.npm_config_fetch_retries || '5';
+process.env.npm_config_fetch_retry_mintimeout = process.env.npm_config_fetch_retry_mintimeout || '10000';
+process.env.npm_config_fetch_retry_maxtimeout = process.env.npm_config_fetch_retry_maxtimeout || '120000';
+
 const sh = (cmd, cwd = ROOT) => {
     console.log('$', cmd, `(${cwd})`);
     execSync(cmd, { stdio: 'inherit', cwd });
