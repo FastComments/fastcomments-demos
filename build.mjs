@@ -21,6 +21,7 @@ const LIBS = [
     { slug: '11ty',     repo: 'fastcomments-11ty' },
     { slug: 'gatsby',   repo: 'fastcomments-gatsbyjs-example' },
     { slug: 'nextjs',   repo: 'fastcomments-nextjs' },
+    { slug: 'solidjs',  repo: 'fastcomments-solidjs' },
 ];
 
 // Make every nested `npm ci` retry transient registry errors (ECONNRESET etc).
