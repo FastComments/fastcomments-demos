@@ -20,6 +20,27 @@ dist/
   nextjs/     ← served at /commenting-system-for-nextjs
 ```
 
+## Temporary / ad-hoc demos (`tmp_demos/`)
+
+One-off demos live in `tmp_demos/<slug>/` in this repo (each is a small vite
+app whose `npm run build` emits `dist/`). The build stages them at
+`dist/tmp_demos/<slug>/` and the worker serves everything under that
+directory at `fastcomments.com/tmp_demos/<slug>` through a single static
+mount, so shipping a new one requires NO worker changes:
+
+1. Create `tmp_demos/<slug>/` with `index.html`, `src/`, `package.json`
+   (with a `build` script), and a vite config using `base: './'` (assets
+   must be relative because the bundle serves from a subpath).
+2. Append `{ slug, deps }` to the `TMP_DEMOS` array in `build.mjs`. `deps`
+   are repos cloned into `build/` as siblings of the staged demo before it
+   builds; `ref` pins a branch, `prepare` runs once per dep (e.g. compile a
+   library the demo links against).
+3. Deploy as usual; the demo is live at `/tmp_demos/<slug>`.
+
+`tmp_demos/idcollab` is the reference example: it builds the React Native
+SDK from source (pinned branch) against a compiled `fastcomments-sdk-js`
+sibling.
+
 ## Local iteration
 
 By default `build.mjs` clones each repo fresh from GitHub. To reuse local
@@ -28,6 +49,13 @@ checkouts for faster iteration, point at a parent directory that contains the
 
 ```
 DEMOS_LOCAL_SOURCE_DIR=/home/winrid/dev/fastcomments node build.mjs
+```
+
+To build a subset, filter by slug (note `dist/` is wiped at the start of
+every run, so only deploy full builds):
+
+```
+DEMOS_FILTER=idcollab node build.mjs
 ```
 
 ## Adding a new demo
