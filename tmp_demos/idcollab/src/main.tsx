@@ -20,6 +20,7 @@ import { VoteStyle } from 'fastcomments-typescript';
 //   pageReactConfig (heart svg)         -> same field
 //   like-only voting with a star        -> voteStyle: Heart + assets override
 //   arrow submit inside the text box    -> useInlineSubmitButton
+//   hide the username + notification bell-> hideTopBar
 function AppIdcolab() {
     const STAR = 'https://cdn.fastcomments.com/images/star-64-empty.png';
     const STAR_FILLED = 'https://cdn.fastcomments.com/images/star-64-filled.png';
@@ -40,6 +41,9 @@ function AppIdcolab() {
         },
         useShowCommentsToggle: true,
         countAboveToggle: 1,
+        // Hide the top bar above the input (logged-in username, avatar, logout
+        // menu, and notification bell) per their request.
+        hideTopBar: true,
         voteStyle: VoteStyle.Heart,
         useInlineSubmitButton: true,
         mentionGroupIds: ['idcolab-demo-project'],
