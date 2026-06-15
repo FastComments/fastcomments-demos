@@ -36,8 +36,8 @@ const TMP_DEMOS = [
     {
         slug: 'idcollab',
         deps: [
-            { repo: 'fastcomments-sdk-js', ref: 'regen-page-reacts-3.2.4', prepare: 'npm ci --ignore-scripts && npm run compile' },
-            { repo: 'fastcomments-react-native-sdk', ref: 'redesign-theme-tokens-live-chat', prepare: 'npm install --install-links --legacy-peer-deps' },
+            { repo: 'fastcomments-sdk-js', ref: 'main', prepare: 'npm ci --ignore-scripts && npm run compile' },
+            { repo: 'fastcomments-react-native-sdk', ref: 'main', prepare: 'npm install --install-links --legacy-peer-deps' },
         ],
     },
 ];
