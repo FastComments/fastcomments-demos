@@ -10,7 +10,8 @@ After `node build.mjs` runs, `dist/` looks like:
 
 ```
 dist/
-  react/      ← served at /commenting-system-for-react
+  react/        ← served at /commenting-system-for-react
+  react-native/ ← served at /commenting-system-for-react-native
   vue/        ← served at /commenting-system-for-vue
   angular/    ← served at /commenting-system-for-angular
   svelte/     ← served at /commenting-system-for-svelte

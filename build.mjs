@@ -14,6 +14,7 @@ const DIST = resolve(ROOT, 'dist');
 
 const LIBS = [
     { slug: 'react',    repo: 'fastcomments-react' },
+    { slug: 'react-native', repo: 'fastcomments-react-native-sdk' },
     { slug: 'vue',      repo: 'fastcomments-vue-next' },
     { slug: 'angular',  repo: 'fastcomments-angular' },
     { slug: 'svelte',   repo: 'fastcomments-svelte' },
