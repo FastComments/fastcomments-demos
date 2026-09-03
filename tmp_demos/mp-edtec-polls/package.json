@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-mp-edtec-polls",
+  "description": "Static side-by-side demo of two poll placements inside the comment widget (served at /tmp_demos/mp-edtec-polls)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

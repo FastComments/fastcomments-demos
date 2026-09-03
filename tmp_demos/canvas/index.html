@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastComments Canvas - sequential content without drag-to-pan</title>
+    <meta name="description" content="A grid canvas for sequential content. Step between blocks with a two-speed d-pad instead of dragging to pan, and discuss every block with FastComments." />
+    <script>
+        (function () {
+            try {
+                var s = localStorage.getItem('fc-showcase-theme');
+                if (s !== 'light' && s !== 'dark') {
+                    s = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-fc-theme', s);
+            } catch (e) {}
+        })();
+    </script>
+    <script src="https://cdn.fastcomments.com/js/embed-v2.min.js"></script>
+</head>
+<body>
+<div id="app" class="app">
+    <aside class="rail" id="rail">
+        <div class="brand">
+            <img class="brand-logo brand-logo-light" src="https://fastcomments.com/images/svg/v2/logo.svg" alt="FastComments" />
+            <img class="brand-logo brand-logo-dark" src="https://fastcomments.com/images/svg/v2/logo_white.svg" alt="FastComments" />
+            <div class="brand-words">
+                <span class="brand-name">FastComments</span>
+                <span class="brand-sub">Canvas demo</span>
+            </div>
+        </div>
+        <p class="rail-intro">Sequential content on a grid. There is no drag-to-pan: step between blocks with the arrows, or pick one from the outline. Dragging moves a block to another cell.</p>
+        <div class="rail-head">
+            <h2>Outline</h2>
+            <button type="button" id="reset" class="btn">Reset</button>
+        </div>
+        <nav id="tree" class="tree" aria-label="Canvas outline"></nav>
+        <div class="rail-foot">
+            <div class="theme-toggle" id="theme-toggle" role="group" aria-label="Theme">
+                <button type="button" data-theme="light">Light</button>
+                <button type="button" data-theme="dark">Dark</button>
+            </div>
+            <table class="keys">
+                <tbody>
+                <tr><td><kbd>&larr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd> <kbd>&darr;</kbd></td><td>Next block</td></tr>
+                <tr><td><kbd>Shift</kbd> + arrow</td><td>Next major block</td></tr>
+                <tr><td><kbd>Enter</kbd></td><td>Edit text</td></tr>
+                <tr><td><kbd>Delete</kbd></td><td>Delete block</td></tr>
+                <tr><td>Drag a block</td><td>Move it to a free cell</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </aside>
+
+    <main class="stage">
+        <div class="toolbar" id="toolbar">
+            <div class="toolbar-group">
+                <button type="button" id="add-minor" class="btn">Add minor block</button>
+                <button type="button" id="add-major" class="btn">Add major block</button>
+            </div>
+            <div class="toolbar-group toolbar-focus" id="toolbar-focus">
+                <span id="focus-label" class="focus-label"></span>
+                <span class="swatches" id="swatches" role="group" aria-label="Block color"></span>
+                <button type="button" id="add-child-minor" class="btn">Child: minor</button>
+                <button type="button" id="add-child-major" class="btn">Child: major</button>
+                <button type="button" id="delete" class="btn btn-danger">Delete</button>
+            </div>
+            <button type="button" id="thread-toggle" class="btn thread-toggle">Comments</button>
+        </div>
+        <div id="viewport" class="viewport">
+            <div id="layer" class="layer"></div>
+            <div id="dpad" class="dpad" role="group" aria-label="Navigate blocks">
+                <button type="button" class="dpad-btn up-major" data-dir="up" data-step="major" title="Previous major block above (Shift + Up)"><svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5M7 19l5-5 5 5"/></svg></button>
+                <button type="button" class="dpad-btn up-minor" data-dir="up" data-step="minor" title="Block above (Up)"><svg viewBox="0 0 24 24"><path d="M7 15l5-5 5 5"/></svg></button>
+                <button type="button" class="dpad-btn left-major" data-dir="left" data-step="major" title="Previous major block (Shift + Left)"><svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5M19 7l-5 5 5 5"/></svg></button>
+                <button type="button" class="dpad-btn left-minor" data-dir="left" data-step="minor" title="Previous block (Left)"><svg viewBox="0 0 24 24"><path d="M15 7l-5 5 5 5"/></svg></button>
+                <button type="button" class="dpad-btn right-minor" data-dir="right" data-step="minor" title="Next block (Right)"><svg viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></button>
+                <button type="button" class="dpad-btn right-major" data-dir="right" data-step="major" title="Next major block (Shift + Right)"><svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5M5 7l5 5-5 5"/></svg></button>
+                <button type="button" class="dpad-btn down-minor" data-dir="down" data-step="minor" title="Block below (Down)"><svg viewBox="0 0 24 24"><path d="M7 9l5 5 5-5"/></svg></button>
+                <button type="button" class="dpad-btn down-major" data-dir="down" data-step="major" title="Next major block below (Shift + Down)"><svg viewBox="0 0 24 24"><path d="M7 5l5 5 5-5M7 10l5 5 5-5"/></svg></button>
+            </div>
+        </div>
+    </main>
+
+    <aside class="thread" id="thread">
+        <div class="thread-head">
+            <h2 id="thread-title">Comments</h2>
+            <span id="thread-kind" class="thread-kind"></span>
+        </div>
+        <p class="thread-intro">Every block has its own FastComments thread. Pick a block and the discussion follows.</p>
+        <div id="thread-mount" class="thread-mount"></div>
+    </aside>
+</div>
+
+<div id="popover" class="popover" hidden>
+    <button type="button" class="btn" id="popover-minor">Add minor block here</button>
+    <button type="button" class="btn" id="popover-major">Add major block here</button>
+</div>
+
+<script type="module" src="./src/main.ts"></script>
+</body>
+</html>

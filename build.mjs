@@ -41,6 +41,11 @@ const TMP_DEMOS = [
             { repo: 'fastcomments-react-native-sdk', ref: 'main', prepare: 'npm install --install-links --legacy-peer-deps' },
         ],
     },
+    // Static page (no bundler): its build script copies the files into dist/.
+    { slug: 'mp-edtec-polls', deps: [] },
+    { slug: 'mp-edtec-file-uploads', deps: [] },
+    // Grid canvas for sequential content (Miro alternative pitch); plain TS, no deps.
+    { slug: 'canvas', deps: [] },
 ];
 
 // Make every nested `npm ci` retry transient registry errors (ECONNRESET etc).

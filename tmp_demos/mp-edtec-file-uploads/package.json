@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-mp-edtec-file-uploads",
+  "description": "Static side-by-side demo of two file attachment flows inside the comment widget (served at /tmp_demos/mp-edtec-file-uploads)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

@@ -1,0 +1,237 @@
+/*
+ * Poll block for the demo. Variables and base rules are lifted from the widget's
+ * questions/ratings stylesheet (fastcomments/public/stylesheets/questions.less) so the
+ * poll uses the same palette, radii, and motion as the rest of the widget. The
+ * fc-q-poll* classes are new: polls do not exist in the product yet.
+ */
+.fc-q-root {
+    --fc-q-accent: #333;
+    --fc-q-accent-text: #fff;
+    --fc-q-text: inherit;
+    --fc-q-text-muted: #666;
+    --fc-q-surface: transparent;
+    --fc-q-chip-bg: #f6f7f8;
+    --fc-q-chip-bg-hover: #ececec;
+    --fc-q-chip-text: #171717;
+    --fc-q-border: #bfbfbf;
+    --fc-q-radius-chip: 12px;
+    --fc-q-radius-card: 16px;
+    --fc-q-radius-pill: 999px;
+    --fc-q-gap: 8px;
+    --fc-q-pad: 16px;
+    --fc-q-title-size: 1.25em;
+    --fc-q-title-weight: 600;
+    --fc-q-help-size: 0.875em;
+    --fc-q-transition: 180ms ease;
+    --fc-q-shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --fc-q-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --fc-q-bar-track: #e5e5e5;
+    --fc-q-icon-check: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M4 12.5l5 5L20 6.5'/></svg>");
+    color: var(--fc-q-text);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.fc-q-area { position: relative; padding: 16px 0; }
+
+.fc-q-card {
+    position: relative;
+    padding: calc(var(--fc-q-pad) * 1.25) var(--fc-q-pad);
+    border-radius: var(--fc-q-radius-card);
+    background: var(--fc-q-surface);
+    margin: 0 0 calc(var(--fc-q-gap) * 2) 0;
+}
+
+.fc-q-card__title {
+    margin: 0 0 var(--fc-q-pad) 0;
+    font-size: var(--fc-q-title-size);
+    font-weight: var(--fc-q-title-weight);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: inherit;
+}
+
+.fc-q-card__body { width: 100%; }
+
+.fc-q-card__help {
+    font-size: var(--fc-q-help-size);
+    color: var(--fc-q-text-muted);
+    line-height: 1.4;
+}
+
+.fc-q-breakdown__total {
+    font-size: var(--fc-q-help-size);
+    color: var(--fc-q-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.fc-q-saved {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--fc-q-radius-pill);
+    background: var(--fc-q-chip-bg);
+    color: var(--fc-q-accent);
+    font-size: var(--fc-q-help-size);
+    font-weight: 600;
+}
+
+.fc-q-saved::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: currentColor;
+    -webkit-mask: var(--fc-q-icon-check) no-repeat center / contain;
+    mask: var(--fc-q-icon-check) no-repeat center / contain;
+}
+
+/* Placement A: the card sits in the extension slot above the reply box, framed like the comment input (brand shape). */
+.fc-q-card--poll {
+    margin: 0;
+    border: 1px solid var(--fc-q-border);
+    border-radius: 0 11px 11px 11px;
+}
+
+/* Placement B: the card is part of a comment body, so it aligns with the comment text and drops the frame. */
+.comment-content .fc-q-area { padding: 6px 0 0 0; }
+.comment-content .fc-q-card--poll { padding: 12px 0 0 2px; border: 0; border-radius: 0; }
+.comment-content .fc-q-card--poll .fc-q-card__title { font-size: 1.05em; margin-bottom: 10px; }
+
+/* Options. Each option is a chip that doubles as its own result bar once the poll is in the results state. */
+.fc-q-poll__options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fc-q-gap);
+}
+
+.fc-q-poll__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 0 11px 11px 11px;
+    background: var(--fc-q-chip-bg);
+    color: var(--fc-q-chip-text);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--fc-q-shadow-rest);
+    transition: background var(--fc-q-transition), border-color var(--fc-q-transition), transform var(--fc-q-transition), box-shadow var(--fc-q-transition);
+    user-select: none;
+}
+
+.fc-q-poll__option:hover {
+    background: var(--fc-q-chip-bg-hover);
+    transform: scale(1.01);
+    box-shadow: var(--fc-q-shadow-hover);
+}
+
+.fc-q-poll__option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    pointer-events: none;
+}
+
+.fc-q-poll__option-mark {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 1px solid var(--fc-q-border);
+    border-radius: 0 6px 6px 6px;
+    background: #fff;
+    transition: background var(--fc-q-transition), border-color var(--fc-q-transition);
+}
+
+.fc-q-poll__option-label { position: relative; flex: 1 1 auto; }
+
+.fc-q-poll__option-pct {
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 36px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--fc-q-text-muted);
+    opacity: 0;
+    transition: opacity var(--fc-q-transition);
+}
+
+.fc-q-poll__option-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--fc-q-bar-track);
+    transition: width 300ms ease;
+}
+
+.fc-q-poll__option > :not(.fc-q-poll__option-bar) { position: relative; }
+
+.fc-q-poll__option--selected {
+    border-color: var(--fc-q-accent);
+}
+
+.fc-q-poll__option--selected .fc-q-poll__option-mark {
+    background: var(--fc-q-accent);
+    border-color: var(--fc-q-accent);
+}
+
+.fc-q-poll__option--selected .fc-q-poll__option-mark::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--fc-q-accent-text);
+    -webkit-mask: var(--fc-q-icon-check) no-repeat center / 12px 12px;
+    mask: var(--fc-q-icon-check) no-repeat center / 12px 12px;
+}
+
+/* Results state: bars grow in, percentages fade in, the chips stop scaling on hover. */
+.fc-q-poll--results .fc-q-poll__option-pct { opacity: 1; }
+.fc-q-poll--results .fc-q-poll__option:hover { transform: none; }
+.fc-q-poll--results .fc-q-poll__option--selected .fc-q-poll__option-bar { background: #d9d9d9; }
+
+/* Footer: response count, close date, and the text actions. */
+.fc-q-poll__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    margin-top: 14px;
+}
+
+.fc-q-poll__footer-spacer { flex: 1 1 auto; }
+
+/* The widget's .hidden rule loads before this file, so re-assert it for the footer controls. */
+.fc-q-poll__footer .hidden { display: none; }
+
+.fc-q-poll__link {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.fc-q-poll__link:hover { text-decoration: none; }
+
+@media (max-width: 500px) {
+    .fc-q-poll__option { padding: 10px 12px; }
+    .fc-q-poll__footer { gap: 6px 10px; }
+}

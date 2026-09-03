@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="robots" content="noindex"/>
+    <title>File attachments in the FastComments comment widget (static demo)</title>
+    <link rel="stylesheet" href="./widget.css"/>
+    <link rel="stylesheet" href="./uploads.css"/>
+    <style>
+        /* Page chrome only. Everything inside .mp-widget is the comment widget's own markup and stylesheet. */
+        html { background: #f7f7f8; }
+        body {
+            color: #0b0b0f;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .mp-page { max-width: 1440px; margin: 0 auto; padding: 24px 24px 64px 24px; box-sizing: border-box; }
+        .mp-notice {
+            padding: 14px 18px;
+            border: 1px solid #d4d4d8;
+            border-radius: 0 11px 11px 11px;
+            background: #ffffff;
+            font-weight: 600;
+        }
+        .mp-notice span { font-weight: 400; }
+        .mp-header { display: flex; align-items: center; gap: 16px; margin: 28px 0 6px 0; }
+        .mp-header img { width: 34px; height: 40px; }
+        .mp-header h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em; }
+        .mp-intro { max-width: 760px; margin: 0 0 32px 0; color: #4a4a52; }
+        .mp-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+        .mp-column h2 { margin: 0 0 6px 0; font-size: 20px; font-weight: 700; }
+        .mp-column > p { margin: 0 0 16px 0; color: #4a4a52; }
+        .mp-widget {
+            padding: 12px;
+            border: 1px solid #e4e4e7;
+            border-radius: 0 11px 11px 11px;
+            background: #ffffff;
+        }
+        .mp-widget .v2 { color: #000; }
+        @media (max-width: 960px) {
+            .mp-columns { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+            .mp-page { padding: 16px 12px 48px 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="mp-page">
+    <div class="mp-notice">This is a static demo. <span>The comments, votes, and users on this page are hardcoded. Files you attach never leave your browser: the upload is simulated and the comment you post is kept in memory only, so it resets when the page reloads.</span></div>
+
+    <div class="mp-header">
+        <img src="https://fastcomments.com/images/svg/v2/logo.svg" alt="FastComments"/>
+        <h1>File attachments in the comment widget: two flows</h1>
+    </div>
+    <p class="mp-intro">Both columns use the comment widget's real markup and stylesheet. Attach a file from your computer in either column, then submit the comment to see how it is posted. Drag and drop works in Option B.</p>
+
+    <div class="mp-columns">
+
+        <!-- ===================== Option A: toolbar paperclip + attachment list ===================== -->
+        <section class="mp-column">
+            <h2>Option A: Paperclip in the editor toolbar</h2>
+            <p>A paperclip sits next to the image button. Attached files appear as chips under the comment box, and posted comments show a compact list of files with a download action.</p>
+            <div class="mp-widget">
+                <div id="fastcomments-widget-a" class="v2" data-attachment-style="list"><d>
+                    <d class="fast-comments">
+                        <d class="top-area">
+                            <form class="comment-reply root" data-parent-id="null">
+                                <div class="comment-reply-top-bar">
+                                    <div class="logged-in-info">
+                                        <span class="avatar"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e8dce6'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EPN%3C/text%3E%3C/svg%3E" alt="Avatar" class="open-profile"/></span>
+                                        <span class="username open-profile">Priya N.</span>
+                                    </div>
+                                    <d class="right">
+                                        <div class="menu dropdown">
+                                            <div class="drop-label"><i></i><i></i><i></i></div>
+                                            <div class="items card goes-black"><div class="item log-out" data-parent-id="null">Log Out</div></div>
+                                        </div>
+                                        <d class="notification-bell"><i class="icon bell"></i><i class="icon bell-red"></i><d class="count">0</d></d>
+                                    </d>
+                                    <d class="notifications"></d>
+                                </div>
+                                <div class="comment-input">
+                                    <textarea name="fastcomments-comment" autocomplete="off" class="comment-input" required id="input-for-parent-null-a" data-parent-id="null" data-restore-id="fcc-null" placeholder="Enter a comment here..." maxlength="2000"></textarea>
+                                    <div class="horizontal-border-wrapper">
+                                        <div class="horizontal-border horizontal-border-top-left"></div>
+                                        <div class="horizontal-border horizontal-border-top-right"></div>
+                                        <div class="horizontal-border horizontal-border-left"></div>
+                                        <div class="horizontal-border horizontal-border-right"></div>
+                                        <div class="horizontal-border horizontal-border-bottom-left"></div>
+                                        <div class="horizontal-border horizontal-border-bottom-right"></div>
+                                    </div>
+                                </div>
+                                <div class="reply-button-wrapper"><button type="submit" data-parent-id="null" class="fast-comments-reply">Submit Reply<i class="icon bubble"></i></button></div>
+                                <div class="toolbar default-hidden" data-comment-id="null">
+                                    <div class="t-btn icon bold" data-action="bold"></div>
+                                    <div class="t-btn icon it" data-action="it"></div>
+                                    <div class="t-btn icon ul" data-action="ul"></div>
+                                    <div class="t-btn icon s" data-action="s"></div>
+                                    <div class="t-btn icon code" data-action="code"></div>
+                                    <div class="t-btn icon link" data-action="link" title="Insert Link"></div>
+                                    <div class="t-btn icon img-btn-wrap img-up" data-action="img-up" title="Insert Picture"></div>
+                                    <div class="t-btn icon img-btn-wrap attach" data-action="attach" title="Attach Files"><input name="files" title="Attach Files" type="file" multiple class="file-input" data-parent-id="null"></div>
+                                    <div class="t-btn icon gif txt" data-action="gif"></div>
+                                </div>
+                                <div class="fc-att-pending"></div>
+                            </form>
+                            <div class="select-dir-wrapper">
+                                <div class="comment-count">5 comments</div>
+                                <div class="select-dir">
+                                    <div class="dropdown">
+                                        <div class="drop-label">Most Relevant <i>▼</i></div>
+                                        <div class="items card goes-black">
+                                            <div class="dir-drop-btn" data-value="MR">Most Relevant</div>
+                                            <div class="dir-drop-btn" data-value="NF">Newest First</div>
+                                            <div class="dir-drop-btn" data-value="OF">Oldest First</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <d id="new-comments-message-root-a" data-comment-id="null" class="new-comments-message hidden"></d>
+                        </d>
+                        <d class="comments">
+
+                            <div class="comment 24hr is-admin" id="a-c1">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=a-c1" class="jump-link" data-comment-id="a-c1" title="9/3/2026, 6:30:00 AM">4 hours ago</a>
+                                        <div class="pin-small icon" title="This comment is pinned."></div>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23333333'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23ffffff'%3EEM%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="a-c1"/><d class="activity-icon online"></d></d>
+                                    <div class="comment-content" data-comment-id="a-c1">
+                                        <div class="commenter-name"><div class="label">Administrator</div><b class="username">Dr. Elena Marsh</b></div>
+                                        <div class="comment-text">Week 6 slides and the annotated call-stack worksheet are attached. Print the worksheet or have it open on Thursday.</div>
+                                        <div class="fc-att-list">
+                                            <a class="fc-att-list__row" href="#" title="week6-recursion-slides.pdf"><span class="fc-att__type">PDF</span><span class="fc-att-list__name">week6-recursion-slides.pdf</span><span class="fc-att__meta">2.4 MB</span><span class="fc-att-list__download" title="Download"></span></a>
+                                            <a class="fc-att-list__row" href="#" title="call-stack-worksheet.pdf"><span class="fc-att__type">PDF</span><span class="fc-att-list__name">call-stack-worksheet.pdf</span><span class="fc-att__meta">310 KB</span><span class="fc-att-list__download" title="Download"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">18</span><span class="upvote icon up" data-comment-id="a-c1" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="a-c1" title="Click For Thumbs Down"></span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="a-c1"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment 24hr" id="a-c2">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=a-c2" class="jump-link" data-comment-id="a-c2" title="9/3/2026, 8:14:22 AM">2 hours ago</a>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23dfe3ea'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EMT%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="a-c2"/><d class="activity-icon online"></d></d>
+                                    <div class="comment-content" data-comment-id="a-c2">
+                                        <div class="commenter-name"><b class="username">Marcus T.</b></div>
+                                        <div class="comment-text">Here is my fib(4) trace if it helps anyone check their work. Each box is one stack frame.</div>
+                                        <div class="fc-att-list">
+                                            <a class="fc-att-list__row" href="#" title="fib4-trace.png"><span class="fc-att__type fc-att__type--img">PNG</span><span class="fc-att-list__name">fib4-trace.png</span><span class="fc-att__meta">1.1 MB</span><span class="fc-att-list__download" title="Download"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">14</span><span class="upvote icon up" data-comment-id="a-c2" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="a-c2" title="Click For Thumbs Down"></span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="a-c2"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                                <div class="toggle-replies" data-comment-id="a-c2"><i class="icon eye-slash"></i><span>Hide Replies <span class="count">1</span></span></div>
+                                <div class="children">
+                                    <div class="comment 24hr" id="a-c2-r1">
+                                        <div class="inner">
+                                            <div class="top-right">
+                                                <a href="#fast-comments-jt=a-c2-r1" class="jump-link" data-comment-id="a-c2-r1" title="9/3/2026, 9:12:51 AM">1 hour ago</a>
+                                                <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                            </div>
+                                            <div class="icon replied"></div>
+                                            <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e6ddd0'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EAK%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="a-c2-r1"/></d>
+                                            <div class="comment-content" data-comment-id="a-c2-r1">
+                                                <div class="commenter-name"><b class="username">Aisha K.</b></div>
+                                                <div class="comment-text">This is clearer than the textbook diagram, thank you.</div>
+                                            </div>
+                                            <div class="comment-bottom">
+                                                <div class="comment-bottom-toolbar">
+                                                    <div class="comment-toolbar-vote">
+                                                        <div class="comment-vote-options"><span class="votes-up" title="thumbs up">4</span><span class="upvote icon up" data-comment-id="a-c2-r1" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="a-c2-r1" title="Click For Thumbs Down"></span></div>
+                                                    </div>
+                                                    <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="a-c2-r1"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                                </div>
+                                                <div class="reply-form-wrapper"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment 24hr" id="a-c3">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=a-c3" class="jump-link" data-comment-id="a-c3" title="9/3/2026, 7:02:48 AM">3 hours ago</a>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e6ddd0'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EAK%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="a-c3"/></d>
+                                    <div class="comment-content" data-comment-id="a-c3">
+                                        <div class="commenter-name"><b class="username">Aisha K.</b></div>
+                                        <div class="comment-text">My solution for problem 2, feedback welcome. It passes the sample cases but the base case feels clunky.</div>
+                                        <div class="fc-att-list">
+                                            <a class="fc-att-list__row" href="#" title="problem2.py"><span class="fc-att__type">PY</span><span class="fc-att-list__name">problem2.py</span><span class="fc-att__meta">4 KB</span><span class="fc-att-list__download" title="Download"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">9</span><span class="upvote icon up" data-comment-id="a-c3" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="a-c3" title="Click For Thumbs Down"></span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="a-c3"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment" id="a-c4">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=a-c4" class="jump-link" data-comment-id="a-c4" title="9/2/2026, 1:20:37 PM">Yesterday</a>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23ece4d4'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3ESO%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="a-c4"/></d>
+                                    <div class="comment-content" data-comment-id="a-c4">
+                                        <div class="commenter-name"><b class="username">Sam O.</b></div>
+                                        <div class="comment-text">Question 3 says "without a helper". Does an inner function count as a helper, or only a second top-level function?</div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">3</span><span class="upvote icon up" data-comment-id="a-c4" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="a-c4" title="Click For Thumbs Down"></span><span class="votes-down" title="thumbs down">1</span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="a-c4"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </d>
+                        <d class="footer"><a href="https://fastcomments.com" target="_blank"><i class="icon logo"></i>FastComments.com</a></d>
+                    </d>
+                </d></div>
+            </div>
+        </section>
+
+        <!-- ===================== Option B: drop zone + preview tiles ===================== -->
+        <section class="mp-column">
+            <h2>Option B: Drop zone under the comment box</h2>
+            <p>A drop target sits under the comment box, so files can be dragged in or picked with a click. Posted comments show attachments as preview tiles with image thumbnails.</p>
+            <div class="mp-widget">
+                <div id="fastcomments-widget-b" class="v2" data-attachment-style="tiles"><d>
+                    <d class="fast-comments">
+                        <d class="top-area">
+                            <form class="comment-reply root" data-parent-id="null">
+                                <div class="comment-reply-top-bar">
+                                    <div class="logged-in-info">
+                                        <span class="avatar"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e8dce6'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EPN%3C/text%3E%3C/svg%3E" alt="Avatar" class="open-profile"/></span>
+                                        <span class="username open-profile">Priya N.</span>
+                                    </div>
+                                    <d class="right">
+                                        <div class="menu dropdown">
+                                            <div class="drop-label"><i></i><i></i><i></i></div>
+                                            <div class="items card goes-black"><div class="item log-out" data-parent-id="null">Log Out</div></div>
+                                        </div>
+                                        <d class="notification-bell"><i class="icon bell"></i><i class="icon bell-red"></i><d class="count">0</d></d>
+                                    </d>
+                                    <d class="notifications"></d>
+                                </div>
+                                <div class="comment-input">
+                                    <textarea name="fastcomments-comment" autocomplete="off" class="comment-input" required id="input-for-parent-null-b" data-parent-id="null" data-restore-id="fcc-null" placeholder="Enter a comment here..." maxlength="2000"></textarea>
+                                    <div class="horizontal-border-wrapper">
+                                        <div class="horizontal-border horizontal-border-top-left"></div>
+                                        <div class="horizontal-border horizontal-border-top-right"></div>
+                                        <div class="horizontal-border horizontal-border-left"></div>
+                                        <div class="horizontal-border horizontal-border-right"></div>
+                                        <div class="horizontal-border horizontal-border-bottom-left"></div>
+                                        <div class="horizontal-border horizontal-border-bottom-right"></div>
+                                    </div>
+                                </div>
+                                <div class="reply-button-wrapper"><button type="submit" data-parent-id="null" class="fast-comments-reply">Submit Reply<i class="icon bubble"></i></button></div>
+                                <div class="toolbar default-hidden" data-comment-id="null">
+                                    <div class="t-btn icon bold" data-action="bold"></div>
+                                    <div class="t-btn icon it" data-action="it"></div>
+                                    <div class="t-btn icon ul" data-action="ul"></div>
+                                    <div class="t-btn icon s" data-action="s"></div>
+                                    <div class="t-btn icon code" data-action="code"></div>
+                                    <div class="t-btn icon link" data-action="link" title="Insert Link"></div>
+                                    <div class="t-btn icon img-btn-wrap img-up" data-action="img-up" title="Insert Picture"></div>
+                                    <div class="t-btn icon gif txt" data-action="gif"></div>
+                                </div>
+                                <div class="fc-att-drop">
+                                    <span class="fc-att-drop__icon"></span>
+                                    <span class="fc-att-drop__text"><b>Drop files here</b> or <span class="fc-att-drop__browse">browse</span></span>
+                                    <span class="fc-att__meta">Up to 25 MB each</span>
+                                    <input name="files" type="file" multiple class="file-input" data-parent-id="null">
+                                    <div class="fc-att-pending"></div>
+                                </div>
+                            </form>
+                            <div class="select-dir-wrapper">
+                                <div class="comment-count">5 comments</div>
+                                <div class="select-dir">
+                                    <div class="dropdown">
+                                        <div class="drop-label">Most Relevant <i>▼</i></div>
+                                        <div class="items card goes-black">
+                                            <div class="dir-drop-btn" data-value="MR">Most Relevant</div>
+                                            <div class="dir-drop-btn" data-value="NF">Newest First</div>
+                                            <div class="dir-drop-btn" data-value="OF">Oldest First</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <d id="new-comments-message-root-b" data-comment-id="null" class="new-comments-message hidden"></d>
+                        </d>
+                        <d class="comments">
+
+                            <div class="comment 24hr is-admin" id="b-c1">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=b-c1" class="jump-link" data-comment-id="b-c1" title="9/3/2026, 6:30:00 AM">4 hours ago</a>
+                                        <div class="pin-small icon" title="This comment is pinned."></div>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23333333'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23ffffff'%3EEM%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="b-c1"/><d class="activity-icon online"></d></d>
+                                    <div class="comment-content" data-comment-id="b-c1">
+                                        <div class="commenter-name"><div class="label">Administrator</div><b class="username">Dr. Elena Marsh</b></div>
+                                        <div class="comment-text">Week 6 slides and the annotated call-stack worksheet are attached. Print the worksheet or have it open on Thursday.</div>
+                                        <div class="fc-att-tiles">
+                                            <a class="fc-att-tile" href="#" title="week6-recursion-slides.pdf"><span class="fc-att-tile__preview"><span class="fc-att__type">PDF</span></span><span class="fc-att-tile__body"><span class="fc-att-tile__name">week6-recursion-slides.pdf</span><span class="fc-att__meta">2.4 MB</span></span></a>
+                                            <a class="fc-att-tile" href="#" title="call-stack-worksheet.pdf"><span class="fc-att-tile__preview"><span class="fc-att__type">PDF</span></span><span class="fc-att-tile__body"><span class="fc-att-tile__name">call-stack-worksheet.pdf</span><span class="fc-att__meta">310 KB</span></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">18</span><span class="upvote icon up" data-comment-id="b-c1" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="b-c1" title="Click For Thumbs Down"></span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="b-c1"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment 24hr" id="b-c2">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=b-c2" class="jump-link" data-comment-id="b-c2" title="9/3/2026, 8:14:22 AM">2 hours ago</a>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23dfe3ea'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EMT%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="b-c2"/><d class="activity-icon online"></d></d>
+                                    <div class="comment-content" data-comment-id="b-c2">
+                                        <div class="commenter-name"><b class="username">Marcus T.</b></div>
+                                        <div class="comment-text">Here is my fib(4) trace if it helps anyone check their work. Each box is one stack frame.</div>
+                                        <div class="fc-att-tiles">
+                                            <a class="fc-att-tile" href="#" title="fib4-trace.png"><span class="fc-att-tile__preview" style="background-image: url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 168 96'%3E%3Crect width='168' height='96' fill='%23ffffff'/%3E%3Cg stroke='%23999' stroke-width='1.2' fill='none'%3E%3Cpath d='M84 24v12M84 36L48 52M84 36l36 16M48 64L30 78M48 64l18 14M120 64l-18 14M120 64l18 14'/%3E%3C/g%3E%3Cg fill='%23f6f7f8' stroke='%23333' stroke-width='1.4'%3E%3Crect x='64' y='10' width='40' height='16' rx='3'/%3E%3Crect x='28' y='50' width='40' height='16' rx='3'/%3E%3Crect x='100' y='50' width='40' height='16' rx='3'/%3E%3Crect x='10' y='78' width='40' height='16' rx='3'/%3E%3Crect x='46' y='78' width='40' height='16' rx='3'/%3E%3Crect x='82' y='78' width='40' height='16' rx='3'/%3E%3Crect x='118' y='78' width='40' height='16' rx='3'/%3E%3C/g%3E%3Cg font-family='sans-serif' font-size='9' fill='%23333' text-anchor='middle'%3E%3Ctext x='84' y='22'%3Efib(4)%3C/text%3E%3Ctext x='48' y='62'%3Efib(3)%3C/text%3E%3Ctext x='120' y='62'%3Efib(2)%3C/text%3E%3Ctext x='30' y='90'%3Efib(2)%3C/text%3E%3Ctext x='66' y='90'%3Efib(1)%3C/text%3E%3Ctext x='102' y='90'%3Efib(1)%3C/text%3E%3Ctext x='138' y='90'%3Efib(0)%3C/text%3E%3C/g%3E%3C/svg%3E&quot;)"></span><span class="fc-att-tile__body"><span class="fc-att-tile__name">fib4-trace.png</span><span class="fc-att__meta">1.1 MB</span></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">14</span><span class="upvote icon up" data-comment-id="b-c2" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="b-c2" title="Click For Thumbs Down"></span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="b-c2"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                                <div class="toggle-replies" data-comment-id="b-c2"><i class="icon eye-slash"></i><span>Hide Replies <span class="count">1</span></span></div>
+                                <div class="children">
+                                    <div class="comment 24hr" id="b-c2-r1">
+                                        <div class="inner">
+                                            <div class="top-right">
+                                                <a href="#fast-comments-jt=b-c2-r1" class="jump-link" data-comment-id="b-c2-r1" title="9/3/2026, 9:12:51 AM">1 hour ago</a>
+                                                <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                            </div>
+                                            <div class="icon replied"></div>
+                                            <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e6ddd0'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EAK%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="b-c2-r1"/></d>
+                                            <div class="comment-content" data-comment-id="b-c2-r1">
+                                                <div class="commenter-name"><b class="username">Aisha K.</b></div>
+                                                <div class="comment-text">This is clearer than the textbook diagram, thank you.</div>
+                                            </div>
+                                            <div class="comment-bottom">
+                                                <div class="comment-bottom-toolbar">
+                                                    <div class="comment-toolbar-vote">
+                                                        <div class="comment-vote-options"><span class="votes-up" title="thumbs up">4</span><span class="upvote icon up" data-comment-id="b-c2-r1" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="b-c2-r1" title="Click For Thumbs Down"></span></div>
+                                                    </div>
+                                                    <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="b-c2-r1"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                                </div>
+                                                <div class="reply-form-wrapper"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment 24hr" id="b-c3">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=b-c3" class="jump-link" data-comment-id="b-c3" title="9/3/2026, 7:02:48 AM">3 hours ago</a>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e6ddd0'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3EAK%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="b-c3"/></d>
+                                    <div class="comment-content" data-comment-id="b-c3">
+                                        <div class="commenter-name"><b class="username">Aisha K.</b></div>
+                                        <div class="comment-text">My solution for problem 2, feedback welcome. It passes the sample cases but the base case feels clunky.</div>
+                                        <div class="fc-att-tiles">
+                                            <a class="fc-att-tile" href="#" title="problem2.py"><span class="fc-att-tile__preview"><span class="fc-att__type">PY</span></span><span class="fc-att-tile__body"><span class="fc-att-tile__name">problem2.py</span><span class="fc-att__meta">4 KB</span></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">9</span><span class="upvote icon up" data-comment-id="b-c3" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="b-c3" title="Click For Thumbs Down"></span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="b-c3"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment" id="b-c4">
+                                <div class="inner">
+                                    <div class="top-right">
+                                        <a href="#fast-comments-jt=b-c4" class="jump-link" data-comment-id="b-c4" title="9/2/2026, 1:20:37 PM">Yesterday</a>
+                                        <div class="menu"><div class="menu-btn icon edit-small"></div></div>
+                                    </div>
+                                    <d class="avatar-wrapper"><img loading="lazy" width="40" height="40" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23ece4d4'/%3E%3Ctext x='28' y='35' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%23333'%3ESO%3C/text%3E%3C/svg%3E" alt="Avatar" class="avatar comment-image open-profile" data-comment-id="b-c4"/></d>
+                                    <div class="comment-content" data-comment-id="b-c4">
+                                        <div class="commenter-name"><b class="username">Sam O.</b></div>
+                                        <div class="comment-text">Question 3 says "without a helper". Does an inner function count as a helper, or only a second top-level function?</div>
+                                    </div>
+                                    <div class="comment-bottom">
+                                        <div class="comment-bottom-toolbar">
+                                            <div class="comment-toolbar-vote">
+                                                <div class="comment-vote-options"><span class="votes-up" title="thumbs up">3</span><span class="upvote icon up" data-comment-id="b-c4" title="Click For Thumbs Up"></span><i class="divider"></i><span class="downvote icon down" data-comment-id="b-c4" title="Click For Thumbs Down"></span><span class="votes-down" title="thumbs down">1</span></div>
+                                            </div>
+                                            <div class="comment-toolbar-reply"><button class="comment-reply-start" data-comment-id="b-c4"><i class="icon reply-arrow-inactive"></i>Reply</button></div>
+                                        </div>
+                                        <div class="reply-form-wrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </d>
+                        <d class="footer"><a href="https://fastcomments.com" target="_blank"><i class="icon logo"></i>FastComments.com</a></d>
+                    </d>
+                </d></div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<script src="./demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+/*
+ * File attachment block for the demo. Palette, radii, and motion follow the widget's
+ * questions/ratings stylesheet so attachments read as native. The fc-att* classes are
+ * new: file attachments beyond inline images do not exist in the product yet.
+ */
+.fast-comments {
+    --fc-att-accent: #333;
+    --fc-att-accent-text: #fff;
+    --fc-att-text-muted: #666;
+    --fc-att-chip-bg: #f6f7f8;
+    --fc-att-chip-bg-hover: #ececec;
+    --fc-att-chip-text: #171717;
+    --fc-att-border: #bfbfbf;
+    --fc-att-border-soft: #e5e5e5;
+    --fc-att-track: #e5e5e5;
+    --fc-att-transition: 180ms ease;
+    --fc-att-shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --fc-att-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --fc-att-icon-clip: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' d='M21 11.5l-8.7 8.7a5.5 5.5 0 0 1-7.8-7.8l9.2-9.2a3.7 3.7 0 0 1 5.2 5.2l-9.2 9.2a1.8 1.8 0 0 1-2.6-2.6l8.5-8.5'/></svg>");
+    --fc-att-icon-cross: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' d='M6 6l12 12M18 6L6 18'/></svg>");
+    --fc-att-icon-check: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M4 12.5l5 5L20 6.5'/></svg>");
+    --fc-att-icon-download: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M12 4v11M7 10l5 5 5-5M5 19h14'/></svg>");
+    --fc-att-icon-upload: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' d='M12 16V5M7 10l5-5 5 5M4 17v2.5h16V17'/></svg>");
+}
+
+/* Toolbar paperclip. Sized like the other editor icons (see .icon.img-up in widget.css). */
+.icon.attach {
+    background: var(--fc-att-accent);
+    -webkit-mask: var(--fc-att-icon-clip) no-repeat center / 16px 16px;
+    mask: var(--fc-att-icon-clip) no-repeat center / 16px 16px;
+}
+
+/* Shared file type badge. */
+.fc-att__type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-width: 34px;
+    height: 22px;
+    padding: 0 6px;
+    box-sizing: border-box;
+    border: 1px solid var(--fc-att-border);
+    border-radius: 0 6px 6px 6px;
+    background: #fff;
+    color: var(--fc-att-accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.fc-att__type--img { background: var(--fc-att-accent); color: var(--fc-att-accent-text); border-color: var(--fc-att-accent); }
+
+.fc-att__meta {
+    flex: 0 0 auto;
+    color: var(--fc-att-text-muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* ---------- Compose: pending attachment chips (both options) ---------- */
+.fc-att-pending {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0 0 0;
+    font-size: 13px;
+}
+
+.fc-att-pending:empty { display: none; }
+
+.fc-att-chip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    padding: 6px 8px 6px 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid var(--fc-att-border-soft);
+    border-radius: 0 9px 9px 9px;
+    background: var(--fc-att-chip-bg);
+    color: var(--fc-att-chip-text);
+    font-weight: 600;
+    box-shadow: var(--fc-att-shadow-rest);
+    animation: pop-in 0.3s ease;
+}
+
+.fc-att-chip__name {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Specificity beats the widget's .comment-reply.root button rule, which would otherwise pad the icon out of existence. */
+.comment-reply.root .fc-att-chip__remove {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 0 6px 6px 6px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0;
+    line-height: 0;
+}
+
+.comment-reply.root .fc-att-chip__remove::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: var(--fc-att-accent);
+    -webkit-mask: var(--fc-att-icon-cross) no-repeat center / 9px 9px;
+    mask: var(--fc-att-icon-cross) no-repeat center / 9px 9px;
+}
+
+.comment-reply.root .fc-att-chip__remove:hover { background: var(--fc-att-chip-bg-hover); }
+
+.fc-att-chip__progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: var(--fc-att-accent);
+    transition: width 120ms linear;
+}
+
+.fc-att-chip--done .fc-att-chip__progress { display: none; }
+.fc-att-chip--uploading .fc-att-chip__meta-size { display: none; }
+.fc-att-chip--done .fc-att-chip__meta-progress { display: none; }
+
+/* ---------- Compose, Option B: drop zone below the input ---------- */
+.fc-att-drop {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    margin: 6px 0 0 0;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    border: 1px dashed var(--fc-att-border);
+    border-radius: 0 11px 11px 11px;
+    background: transparent;
+    color: var(--fc-att-text-muted);
+    font-size: 14px;
+    transition: background var(--fc-att-transition), border-color var(--fc-att-transition);
+    cursor: pointer;
+}
+
+.fc-att-drop:hover, .fc-att-drop--over {
+    border-color: var(--fc-att-accent);
+    background: var(--fc-att-chip-bg);
+}
+
+.fc-att-drop__icon {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    background: var(--fc-att-accent);
+    -webkit-mask: var(--fc-att-icon-upload) no-repeat center / 22px 22px;
+    mask: var(--fc-att-icon-upload) no-repeat center / 22px 22px;
+}
+
+.fc-att-drop__text { flex: 1 1 auto; }
+.fc-att-drop__text b { color: var(--fc-att-chip-text); font-weight: 600; }
+.fc-att-drop__browse { color: var(--fc-att-accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.fc-att-drop input[type=file] { display: none; }
+.fc-att-drop .fc-att-pending { width: 100%; margin: 0; }
+
+/* ---------- Comment body, Option A: attachment list ---------- */
+.fc-att-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0 4px 0;
+    font-size: 13px;
+}
+
+.fc-att-list__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--fc-att-border-soft);
+    border-radius: 0 9px 9px 9px;
+    background: var(--fc-att-chip-bg);
+    color: var(--fc-att-chip-text);
+    text-decoration: none;
+    box-shadow: var(--fc-att-shadow-rest);
+    transition: background var(--fc-att-transition), box-shadow var(--fc-att-transition);
+}
+
+.fc-att-list__row:hover { background: var(--fc-att-chip-bg-hover); box-shadow: var(--fc-att-shadow-hover); }
+
+.fc-att-list__name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.fc-att-list__download {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    background: var(--fc-att-accent);
+    -webkit-mask: var(--fc-att-icon-download) no-repeat center / 18px 18px;
+    mask: var(--fc-att-icon-download) no-repeat center / 18px 18px;
+}
+
+/* ---------- Comment body, Option B: preview tiles ---------- */
+.fc-att-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 8px 0 4px 0;
+    font-size: 13px;
+}
+
+.fc-att-tile {
+    display: flex;
+    flex-direction: column;
+    width: 168px;
+    max-width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--fc-att-border-soft);
+    border-radius: 0 11px 11px 11px;
+    background: #fff;
+    color: var(--fc-att-chip-text);
+    text-decoration: none;
+    box-shadow: var(--fc-att-shadow-rest);
+    transition: box-shadow var(--fc-att-transition), transform var(--fc-att-transition);
+}
+
+.fc-att-tile:hover { box-shadow: var(--fc-att-shadow-hover); transform: translateY(-1px); }
+
+.fc-att-tile__preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 96px;
+    background: var(--fc-att-chip-bg) center / cover no-repeat;
+}
+
+.fc-att-tile__preview .fc-att__type { min-width: 46px; height: 28px; font-size: 13px; }
+
+.fc-att-tile__body { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 9px 10px; }
+
+.fc-att-tile__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+@media (max-width: 500px) {
+    .fc-att-tile { width: calc(50% - 5px); }
+    .fc-att-chip__name { max-width: 140px; }
+}

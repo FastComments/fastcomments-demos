@@ -42,6 +42,16 @@ mount, so shipping a new one requires NO worker changes:
 SDK from source (pinned branch) against a compiled `fastcomments-sdk-js`
 sibling.
 
+`tmp_demos/canvas` is a dependency-free plain TypeScript example: a grid
+canvas for sequential content with two-speed arrow navigation instead of
+drag-to-pan, and a FastComments thread per block (`npm test` runs its
+vitest suite).
+
+A demo does not have to be a vite app. `tmp_demos/mp-edtec-polls` and
+`tmp_demos/mp-edtec-file-uploads` are plain static HTML/CSS/JS with no
+dependencies; their `build` script only copies the files into `dist/`. Use
+that shape for mockups and one-off static pages.
+
 ## Local iteration
 
 By default `build.mjs` clones each repo fresh from GitHub. To reuse local
