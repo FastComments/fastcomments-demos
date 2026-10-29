@@ -11,7 +11,12 @@
 
 <div class="fc-demo-bar">
     <img src="https://fastcomments.com/images/svg/v2/logo.svg" alt="FastComments" width="26" height="30"/>
-    <p>FastComments demo for Footballco: a copy of a Goal article with the FastComments widget in place of OpenWeb. Everything below the header is live, so post a comment and watch it appear on every open copy of this page.</p>
+    <p>FastComments demo for Footballco: a copy of a Goal article with the FastComments widget in place of OpenWeb. You are signed in as a random reader through SSO, the way Goal's own logged-in users would be. Click the name in the header to switch reader. Everything below the header is live, so post a comment and watch it appear on every open copy of this page.</p>
+    <label for="fc-reader">Reader</label>
+    <select id="fc-reader">
+        <option value="sso" selected>Signed in through SSO</option>
+        <option value="anon">Anonymous, no SSO</option>
+    </select>
     <label for="fc-locale">Widget language</label>
     <select id="fc-locale">
         <option value="en_us" selected>English (Goal)</option>
@@ -41,7 +46,8 @@
             <a href="#">Shop</a>
             <a href="#">Tickets &amp; Travel</a>
         </nav>
-        <a class="goal-login" href="#">
+        <a class="goal-login" href="#" id="goal-login">
+            <img alt="" width="28" height="28" hidden/>
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
             <span>Log in</span>
         </a>

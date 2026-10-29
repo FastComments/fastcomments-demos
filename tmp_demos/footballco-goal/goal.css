@@ -105,6 +105,8 @@ img { max-width: 100%; }
     font-size: 15px;
     white-space: nowrap;
 }
+.goal-login img { width: 28px; height: 28px; border-radius: 50%; }
+.goal-login img:not([hidden]) + svg { display: none; }
 
 /* Page grid: 1056px column + 300px rail, like the live site at 1440 */
 .goal-page {
