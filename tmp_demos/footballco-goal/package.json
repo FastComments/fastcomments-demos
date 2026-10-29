@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-footballco-goal",
+  "description": "Static copy of a goal.com article with the FastComments widget in place of OpenWeb (served at /tmp_demos/footballco-goal)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

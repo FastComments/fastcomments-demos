@@ -1,0 +1,268 @@
+/* Recreation of goal.com's article template (Oct 2026): Clash Grotesk headings, Satoshi body, black header, grey page, white column. */
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('./assets/clash-grotesk-variable.woff2') format('woff2');
+    font-weight: 500 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('./assets/satoshi.woff2') format('woff2');
+    font-weight: 300 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('./assets/satoshi-italic.woff2') format('woff2');
+    font-weight: 300 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+:root {
+    --goal-red: #fd0e48;
+    --goal-red-dark: #d90d40;
+    --goal-text: #1a1a1a;
+    --goal-muted: #4a4a4a;
+    --goal-bg: #f5f5f5;
+    --goal-border: #e3e3e3;
+    --font-heading: 'Clash Grotesk', 'Arial Black', Arial, sans-serif;
+    --font-body: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--goal-bg); -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    background: var(--goal-bg);
+    color: var(--goal-text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+}
+a { color: inherit; }
+img { max-width: 100%; }
+
+/* Demo strip (ours, not Goal's) */
+.fc-demo-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 12px 24px;
+    background: #fff;
+    border-bottom: 1px solid var(--goal-border);
+    font-size: 16px;
+}
+.fc-demo-bar img { flex: none; width: 26px; height: 30px; }
+.fc-demo-bar p { flex: 1 1 420px; margin: 0; }
+.fc-demo-bar label { font-weight: 700; }
+.fc-demo-bar select {
+    font: inherit;
+    padding: 6px 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background: #fff;
+    color: inherit;
+}
+
+/* Header */
+.goal-header { background: #000; color: #fff; }
+.goal-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    height: 60px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.goal-logo { display: flex; align-items: center; flex: none; }
+.goal-logo img { width: 95px; height: 28px; }
+.goal-nav { display: flex; align-items: center; gap: 16px; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.goal-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+.goal-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-inline-start: auto;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+/* Page grid: 1056px column + 300px rail, like the live site at 1440 */
+.goal-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1056px) 300px;
+    gap: 24px;
+    justify-content: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px 48px;
+}
+.goal-main { min-width: 0; }
+
+.goal-hero { position: relative; margin: 0; }
+.goal-hero img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.goal-hero figcaption {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    padding: 6px 12px;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.goal-article {
+    position: relative;
+    margin: -36px 0 0 60px;
+    background: #fff;
+}
+.goal-intro { padding: 36px 60px 0; }
+.goal-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 32px;
+    font-size: 15px;
+}
+.goal-meta__author { color: var(--goal-red); font-weight: 700; text-decoration: none; }
+.goal-meta__author:hover { color: var(--goal-red-dark); }
+.goal-meta__divider { width: 1px; height: 18px; background: #bdbdbd; }
+.goal-meta time { color: var(--goal-muted); }
+.goal-meta__comments {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-inline-start: auto;
+    text-decoration: none;
+    font-weight: 700;
+}
+.goal-meta__comments .fast-comments-count { opacity: 0; transition: opacity 150ms; }
+
+.goal-intro h1 {
+    margin: 16px 0 24px;
+    font-family: var(--font-heading);
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+.goal-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.goal-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: #f0f0f0;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+}
+.goal-pill--dark { background: #000; color: #fff; }
+
+.goal-body { padding: 0 60px 24px; }
+.goal-body p { margin: 0 0 24px; font-size: 20px; line-height: 36px; }
+.goal-teaser { font-weight: 700; }
+.goal-body h3 {
+    margin: 36px 0 16px;
+    font-family: var(--font-heading);
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.goal-body p a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--goal-red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+.goal-body p a:hover { color: var(--goal-red-dark); }
+
+.goal-author-bio { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--goal-border); }
+.goal-author-bio p { font-size: 17px; line-height: 28px; margin-bottom: 16px; }
+.goal-author-bio footer { display: flex; flex-direction: column; gap: 2px; }
+.goal-author-bio__name { font-weight: 700; font-size: 17px; }
+.goal-author-bio__role { color: var(--goal-muted); }
+
+/* Comments: this is where OpenWeb sits on the live page */
+.goal-comments { padding: 24px 60px 48px; border-top: 1px solid var(--goal-border); }
+.goal-comments h2 {
+    margin: 0 0 20px;
+    font-family: var(--font-heading);
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+}
+#fastcomments-widget { min-height: 320px; }
+#fastcomments-widget .fast-comments { font-family: var(--font-body); }
+#fastcomments-widget[dir="rtl"] { direction: rtl; }
+
+/* Right rail ad slot, kept so the column width matches the real page */
+.goal-rail { padding-top: 24px; text-align: center; }
+.goal-rail p { margin: 0 0 8px; }
+.goal-ad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    border: 1px solid var(--goal-border);
+    border-radius: 6px;
+    background: #ececec;
+    position: sticky;
+    top: 24px;
+}
+
+.goal-footer { background: #000; color: #fff; }
+.goal-footer__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 16px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.goal-footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
+.goal-footer nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; }
+.goal-footer p { margin: 0; max-width: 900px; font-size: 15px; }
+
+@media (max-width: 1240px) {
+    .goal-page { grid-template-columns: minmax(0, 1fr); }
+    .goal-rail { display: none; }
+}
+@media (max-width: 1100px) {
+    .goal-nav { display: none; }
+}
+@media (max-width: 760px) {
+    .goal-page { padding: 0 0 32px; }
+    .goal-article { margin: 0; }
+    .goal-intro { padding: 20px 16px 0; }
+    .goal-intro h1 { font-size: 32px; line-height: 34px; margin: 12px 0 16px; }
+    .goal-actions { margin-bottom: 20px; }
+    .goal-body { padding: 0 16px 16px; }
+    .goal-body p { font-size: 18px; line-height: 30px; margin-bottom: 20px; }
+    .goal-body h3 { font-size: 24px; line-height: 28px; margin: 28px 0 12px; }
+    .goal-comments { padding: 20px 16px 32px; }
+    .goal-comments h2 { font-size: 28px; line-height: 32px; }
+    .fc-demo-bar { padding: 12px 16px; }
+}

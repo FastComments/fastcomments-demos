@@ -46,6 +46,8 @@ const TMP_DEMOS = [
     { slug: 'mp-edtec-file-uploads', deps: [] },
     // Grid canvas for sequential content (Miro alternative pitch); plain TS, no deps.
     { slug: 'canvas', deps: [] },
+    // Copy of a goal.com article with our widget in place of OpenWeb (Footballco sales demo); static, no deps.
+    { slug: 'footballco-goal', deps: [] },
 ];
 
 // Make every nested `npm ci` retry transient registry errors (ECONNRESET etc).
