@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-tech-customers",
+  "description": "Static customer showcase of tech-oriented FastComments customers and their most discussed pages (served at /tmp_demos/tech-customers)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

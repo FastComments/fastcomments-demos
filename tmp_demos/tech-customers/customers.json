@@ -1,0 +1,511 @@
+[
+  {
+    "group": "content",
+    "name": "Moz",
+    "blurb": "SEO software and the Moz Blog",
+    "sites": [
+      "moz.com"
+    ],
+    "totalComments": 282596,
+    "page": {
+      "url": "https://moz.com/blog/the-anatomy-of-a-ripoff-report-lawsuit",
+      "title": "The Anatomy of a RipOff Report Lawsuit",
+      "comments": 809
+    }
+  },
+  {
+    "group": "content",
+    "name": "It's FOSS",
+    "blurb": "Linux news, tutorials and handbooks",
+    "sites": [
+      "news.itsfoss.com",
+      "linuxhandbook.com",
+      "learnubuntu.com"
+    ],
+    "totalComments": 9518,
+    "page": {
+      "url": "https://news.itsfoss.com/ubuntu-24-04-disappointment/",
+      "title": "I Am So Disappointed With Ubuntu 24.04",
+      "comments": 191
+    }
+  },
+  {
+    "group": "content",
+    "name": "DevOpsCube",
+    "blurb": "DevOps, cloud and Kubernetes tutorials",
+    "sites": [
+      "devopscube.com"
+    ],
+    "totalComments": 1886,
+    "page": {
+      "url": "https://devopscube.com/docker-containers-as-build-slaves-jenkins/",
+      "title": "How to Setup Docker containers as Build Agents for Jenkins",
+      "comments": 105
+    }
+  },
+  {
+    "group": "product",
+    "name": "Logica",
+    "blurb": "Comment threads on business models and scorecards",
+    "sites": [
+      "logica.cloud"
+    ],
+    "totalComments": 1561
+  },
+  {
+    "group": "product",
+    "name": "IDColab",
+    "blurb": "Designer and client discussions in project workspaces",
+    "sites": [
+      "idcolab.com"
+    ],
+    "totalComments": 1363
+  },
+  {
+    "group": "content",
+    "name": "Christian Tietze",
+    "blurb": "macOS development and knowledge-work software",
+    "sites": [
+      "zettelkasten.de",
+      "christiantietze.de"
+    ],
+    "totalComments": 838,
+    "page": {
+      "url": "https://zettelkasten.de/posts/baseline-zettelkasten-software-reviews/",
+      "title": "Baseline for Zettelkasten Software Reviews",
+      "comments": 43
+    }
+  },
+  {
+    "group": "content",
+    "name": "FutureMusic",
+    "blurb": "Music production software and plugins",
+    "sites": [
+      "futuremusic-es.com"
+    ],
+    "totalComments": 631,
+    "page": {
+      "url": "https://www.futuremusic-es.com/plugins-vst-gratis-ofertas-productores-junio-2026/",
+      "title": "Plugins VST gratis y ofertas para productores (Junio 2026)",
+      "comments": 63
+    }
+  },
+  {
+    "group": "product",
+    "name": "LegalAtoms",
+    "blurb": "Discussion inside guided legal case preparation",
+    "sites": [
+      "legalatoms.com"
+    ],
+    "totalComments": 553
+  },
+  {
+    "group": "content",
+    "name": "Kamranicus",
+    "blurb": "Software engineering and maker projects",
+    "sites": [
+      "kamranicus.com"
+    ],
+    "totalComments": 420,
+    "page": {
+      "url": "https://kamranicus.com/building-a-raspberry-pi-3-baby-monitor/",
+      "title": "Building a Raspberry Pi 3/4/5 Baby Monitor",
+      "comments": 146
+    }
+  },
+  {
+    "group": "product",
+    "name": "Yoroll.ai",
+    "blurb": "Comments on AI-generated interactive stories",
+    "sites": [
+      "yoroll.ai"
+    ],
+    "totalComments": 374
+  },
+  {
+    "group": "content",
+    "name": "Giulio Magnifico",
+    "blurb": "Self-hosting, networking and tech tinkering",
+    "sites": [
+      "giuliomagnifico.blog"
+    ],
+    "totalComments": 366,
+    "page": {
+      "url": "https://giuliomagnifico.blog/post/2025-03-22-rai-play-sound-feed/",
+      "title": "Feed RSS dei podcast Rai",
+      "comments": 53
+    }
+  },
+  {
+    "group": "content",
+    "name": "Three Dots Labs",
+    "blurb": "Go, software architecture and DDD",
+    "sites": [
+      "threedots.tech"
+    ],
+    "totalComments": 358,
+    "page": {
+      "url": "https://threedots.tech/post/serverless-cloud-run-firebase-modern-go-application/",
+      "title": "Too modern Go application? Building a serverless application with Google Cloud Run and Firebase",
+      "comments": 34
+    }
+  },
+  {
+    "group": "fintech",
+    "name": "FICO",
+    "blurb": "Credit scoring and analytics, FICO Blog",
+    "sites": [
+      "fico.com"
+    ],
+    "totalComments": 349,
+    "page": {
+      "url": "https://www.fico.com/blogs/us-credit-quality-continues-climb-will-it-level",
+      "title": "US Credit Quality Continues To Climb, But Will It Level Off?",
+      "comments": 24
+    }
+  },
+  {
+    "group": "product",
+    "name": "BibliU",
+    "blurb": "In-book discussion for digital textbooks",
+    "sites": [
+      "bibliu.com"
+    ],
+    "totalComments": 325
+  },
+  {
+    "group": "product",
+    "name": "Papergov",
+    "blurb": "Comments on local government service pages",
+    "sites": [
+      "papergov.com"
+    ],
+    "totalComments": 315,
+    "page": {
+      "url": "https://papergov.com/services/pay-property-taxes-cochise/",
+      "title": "Pay Property Taxes Online, Cochise County",
+      "comments": 3
+    }
+  },
+  {
+    "group": "content",
+    "name": "max.engineer",
+    "blurb": "Essays on software engineering",
+    "sites": [
+      "max.engineer"
+    ],
+    "totalComments": 186,
+    "page": {
+      "url": "https://max.engineer/cms-trap",
+      "title": "CMS Trap",
+      "comments": 57
+    }
+  },
+  {
+    "group": "content",
+    "name": "John Zanussi",
+    "blurb": "Home automation and web development",
+    "sites": [
+      "johnzanussi.com"
+    ],
+    "totalComments": 166,
+    "page": {
+      "url": "https://johnzanussi.com/posts/unifi-g4-doorbell-fingerprint-unlock",
+      "title": "Use UniFi G4 Doorbell Fingerprint to Unlock Home Assistant Lock",
+      "comments": 57
+    }
+  },
+  {
+    "group": "content",
+    "name": "Unlock Softr",
+    "blurb": "No-code tips for Softr builders",
+    "sites": [
+      "unlock-softr.com"
+    ],
+    "totalComments": 153,
+    "page": {
+      "url": "https://www.unlock-softr.com/tip/softr-add-a-copy-to-clipboard-field/r/reczsamGxpWAvNvqB",
+      "title": "Softr tip: How to add a copy to clipboard field",
+      "comments": 12
+    }
+  },
+  {
+    "group": "content",
+    "name": "Qasim Tricks",
+    "blurb": "Android and Windows how-tos",
+    "sites": [
+      "qasimtricks.com"
+    ],
+    "totalComments": 151,
+    "page": {
+      "url": "https://www.qasimtricks.com/2019/07/download-mobile-usb-driver-for-all-android-mobiles-for-windows.html",
+      "title": "How to Find Mobile USB Driver for all Android devices for Windows",
+      "comments": 74
+    }
+  },
+  {
+    "group": "product",
+    "name": "MACHAAO",
+    "blurb": "Live cricket commentary threads",
+    "sites": [
+      "machaao.com"
+    ],
+    "totalComments": 121,
+    "page": {
+      "url": "https://legacy.machaao.com/live/cricbuddy/banind_2022_test_01",
+      "title": "Bangladesh vs India, 1st Test 2022: live commentary",
+      "comments": 5
+    }
+  },
+  {
+    "group": "content",
+    "name": "1EdTech",
+    "blurb": "Open learning technology standards",
+    "sites": [
+      "standards.1edtech.org"
+    ],
+    "totalComments": 93,
+    "page": {
+      "url": "https://standards.1edtech.org/open-badges/guides/standards/ob-trustedcredential/v1p0/impl",
+      "title": "Open Badges 3.0 TrustEd Credential Profile Implementation Guide",
+      "comments": 4
+    }
+  },
+  {
+    "group": "product",
+    "name": "Wajooba",
+    "blurb": "Student communities for online academies",
+    "sites": [
+      "wajooba.ai"
+    ],
+    "totalComments": 73
+  },
+  {
+    "group": "content",
+    "name": "Productived",
+    "blurb": "Productivity software reviews",
+    "sites": [
+      "productived.net"
+    ],
+    "totalComments": 56,
+    "page": {
+      "url": "https://www.productived.net/review-mylifeorganized/",
+      "title": "Structure your life using MyLifeOrganized",
+      "comments": 14
+    }
+  },
+  {
+    "group": "content",
+    "name": "No Deploy Friday",
+    "blurb": "Infrastructure and DevOps notes",
+    "sites": [
+      "nodeployfriday.com"
+    ],
+    "totalComments": 36,
+    "page": {
+      "url": "https://nodeployfriday.com/posts/self-signed-cert/",
+      "title": "Self Signed SSL/TLS Certificate with IP Address",
+      "comments": 13
+    }
+  },
+  {
+    "group": "content",
+    "name": "Nondv",
+    "blurb": "Programming languages and craft",
+    "sites": [
+      "nondv.wtf"
+    ],
+    "totalComments": 27,
+    "page": {
+      "url": "https://nondv.wtf/blog/posts/common-lisp-is-a-dumpster.html",
+      "title": "Common Lisp is a dumpster",
+      "comments": 13
+    }
+  },
+  {
+    "group": "fintech",
+    "name": "CSPR.guru",
+    "blurb": "Casper network market data",
+    "sites": [
+      "cspr.guru"
+    ],
+    "totalComments": 27,
+    "page": {
+      "url": "https://testnet.cspr.guru/market/9",
+      "title": "Market Details",
+      "comments": 1
+    }
+  },
+  {
+    "group": "content",
+    "name": "Lurker Labs",
+    "blurb": "Linux desktop guides",
+    "sites": [
+      "lurkerlabs.com"
+    ],
+    "totalComments": 25,
+    "page": {
+      "url": "https://lurkerlabs.com/fedora-silverblue-ultimate-post-install-guide/",
+      "title": "Fedora Silverblue 41: Ultimate Post Installation Guide",
+      "comments": 25
+    }
+  },
+  {
+    "group": "product",
+    "name": "Mapzaar",
+    "blurb": "Comments on shared travel maps",
+    "sites": [
+      "mapzaar.com"
+    ],
+    "totalComments": 17
+  },
+  {
+    "group": "content",
+    "name": "Drush",
+    "blurb": "The Drupal command-line shell, docs",
+    "sites": [
+      "www.drush.org"
+    ],
+    "totalComments": 14,
+    "page": {
+      "url": "https://www.drush.org/latest/install/",
+      "title": "Installing Drush",
+      "comments": 5
+    }
+  },
+  {
+    "group": "content",
+    "name": "Colin Lord",
+    "blurb": "Home networking and tech how-tos",
+    "sites": [
+      "colinlord.com"
+    ],
+    "totalComments": 14,
+    "page": {
+      "url": "https://colinlord.com/enable-ip-passthrough-mode-on-att-fiber-gateway/",
+      "title": "How To Enable IP Passthrough Mode on an AT&T Fiber Gateway",
+      "comments": 6
+    }
+  },
+  {
+    "group": "content",
+    "name": "DirektoriHosting",
+    "blurb": "Web hosting guides (Indonesian)",
+    "sites": [
+      "direktorihosting.com"
+    ],
+    "totalComments": 10,
+    "page": {
+      "url": "https://direktorihosting.com/tld-domain-gratis-selamanya",
+      "title": "5 Domain Gratis Selamanya",
+      "comments": 2
+    }
+  },
+  {
+    "group": "fintech",
+    "name": "CoinByNews",
+    "blurb": "Crypto news",
+    "sites": [
+      "coinbynews.com"
+    ],
+    "totalComments": 8,
+    "page": {
+      "url": "https://coinbynews.com/terra-founder-do-kwon-luna-foundation-will-have-most-bitcoin-after-satoshi",
+      "title": "Terra Founder Do Kwon: Luna Foundation Will Have Most Bitcoin After Satoshi",
+      "comments": 2
+    }
+  },
+  {
+    "group": "product",
+    "name": "Preql",
+    "blurb": "Discussion on metrics and data definitions",
+    "sites": [
+      "preql.com"
+    ],
+    "totalComments": 7
+  },
+  {
+    "group": "content",
+    "name": "Strange Potato",
+    "blurb": "Indie software development",
+    "sites": [
+      "strangepotato.dev"
+    ],
+    "totalComments": 4,
+    "page": {
+      "url": "https://strangepotato.dev/the-year-ahead-2023",
+      "title": "The Year Ahead (2023)",
+      "comments": 2
+    }
+  },
+  {
+    "group": "fintech",
+    "name": "LetsExchange",
+    "blurb": "Crypto exchange and blog",
+    "sites": [
+      "letsexchange.io"
+    ],
+    "totalComments": 4,
+    "page": {
+      "url": "https://letsexchange.io/blog/how-to-buy-sell-crypto-with-fiat-on-letsexchange",
+      "title": "How to Buy/Sell Crypto with Fiat on LetsExchange",
+      "comments": 1
+    }
+  },
+  {
+    "group": "content",
+    "name": "Tux Engineering",
+    "blurb": "Embedded Linux engineering",
+    "sites": [
+      "tuxengineering.com"
+    ],
+    "totalComments": 3,
+    "page": {
+      "url": "https://tuxengineering.com/blog/2021/07/17/Upgrading-Petalinux-2021.html",
+      "title": "Upgrading to Petalinux 2021",
+      "comments": 3
+    }
+  },
+  {
+    "group": "content",
+    "name": "Tonny Rutakirwa",
+    "blurb": "Cybersecurity and tech writing",
+    "sites": [
+      "tonnyrutakirwa.com"
+    ],
+    "totalComments": 3,
+    "page": {
+      "url": "https://tonnyrutakirwa.com/cybersecurity-protecting-yourself-online-data-protection",
+      "title": "Cybersecurity: Protecting Yourself Online",
+      "comments": 3
+    }
+  },
+  {
+    "group": "content",
+    "name": "PolyCast5",
+    "blurb": "AI-driven hardware control",
+    "sites": [
+      "polycast5.com"
+    ],
+    "totalComments": 3,
+    "page": {
+      "url": "https://polycast5.com/blogs/tutorials/control-custom-builds",
+      "title": "Control Custom Builds",
+      "comments": 1
+    }
+  },
+  {
+    "group": "content",
+    "name": "Anton Ivanopoulos",
+    "blurb": "Ruby and Rails engineering",
+    "sites": [
+      "antonivanopoulos.com"
+    ],
+    "totalComments": 2,
+    "page": {
+      "url": "https://www.antonivanopoulos.com/hunting-down-spooky-json-module-redefinition-via-oj/",
+      "title": "Hunting down spooky JSON module redefinition via Oj",
+      "comments": 2
+    }
+  }
+]

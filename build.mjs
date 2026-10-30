@@ -48,6 +48,8 @@ const TMP_DEMOS = [
     { slug: 'canvas', deps: [] },
     // Copy of a goal.com article with our widget in place of OpenWeb (Footballco sales demo); static, no deps.
     { slug: 'footballco-goal', deps: [] },
+    // Showcase of tech-oriented customers and their most discussed pages; static, rendered from customers.json.
+    { slug: 'tech-customers', deps: [] },
 ];
 
 // Make every nested `npm ci` retry transient registry errors (ECONNRESET etc).
