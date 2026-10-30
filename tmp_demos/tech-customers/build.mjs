@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 // Static demo: renders customers.json into dist/index.html and stages the stylesheet. No bundler, no deps.
-// The page is served from fastcomments.com, so it loads the marketing site's own stylesheet, fonts and images
-// and reuses its markup (hero section, action button, pretty-table) to look like the rest of the site.
 import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,127 +9,107 @@ const DIST = resolve(ROOT, 'dist');
 const customers = JSON.parse(readFileSync(resolve(ROOT, 'customers.json'), 'utf8'));
 
 const GROUPS = [
-    { key: 'content', title: 'Developer & IT publishers', lede: 'Tutorials, engineering blogs and docs where readers debug, disagree and add the missing step.', nameCol: 'Site' },
-    { key: 'product', title: 'Built into their products', lede: 'Teams that embed FastComments inside their own apps, next to the work their users are doing.', nameCol: 'Product' },
-    { key: 'fintech', title: 'Fintech & crypto', lede: 'Analytics, exchanges and market data with an audience that has opinions.', nameCol: 'Site' },
+    { key: 'content', title: 'Developer & IT publishers', lede: 'Tutorials, engineering blogs and docs where readers debug, disagree and add the missing step.' },
+    { key: 'product', title: 'Built into their products', lede: 'Teams that embed FastComments inside their own apps, next to the work their users are doing.' },
+    { key: 'fintech', title: 'Fintech & crypto', lede: 'Analytics, exchanges and market data with an audience that has opinions.' },
 ];
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const num = n => n.toLocaleString('en-US');
 const plural = (n, word) => `${num(n)} ${word}${n === 1 ? '' : 's'}`;
+const maxTotal = Math.max(...customers.map(c => c.totalComments));
+// Log scale so a 3-comment blog still shows up next to a 280k-comment one.
+const barWidth = n => Math.max(2, (Math.log10(n + 1) / Math.log10(maxTotal + 1)) * 100).toFixed(1);
 const totalComments = customers.reduce((sum, c) => sum + c.totalComments, 0);
-const ARROW = '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7 1.5C10.7 1.1134 10.3866 0.8 10 0.8L3.7 0.8C3.3134 0.8 3 1.1134 3 1.5C3 1.8866 3.3134 2.2 3.7 2.2L9.3 2.2L9.3 7.8C9.3 8.1866 9.6134 8.5 10 8.5C10.3866 8.5 10.7 8.1866 10.7 7.8L10.7 1.5ZM1.49497 10.995L10.495 1.99497L9.50503 1.00503L0.505025 10.005L1.49497 10.995Z" fill="currentColor"/></svg>';
 
-const sites = c => c.sites.map(s => `<a class="report-site" href="https://${esc(s)}" target="_blank" rel="noopener">${esc(s.replace(/^www\./, ''))}</a>`).join('');
+const sites = c => c.sites.map(s => `<a class="site" href="https://${esc(s)}" target="_blank" rel="noopener">${esc(s.replace(/^www\./, ''))}</a>`).join('');
 
-const pageCell = c => c.page
-    ? `<a class="fc-row-link report-page-link" href="${esc(c.page.url)}" target="_blank" rel="noopener"><span>${esc(c.page.title)}</span>${ARROW}</a>
-                        <span class="report-muted">${plural(c.page.comments, 'comment')}</span>`
-    : `<span class="report-muted">${esc(c.blurb)}</span>`;
+const row = (c, i) => `
+        <li class="row" style="--i:${i}">
+            <span class="idx">${String(i + 1).padStart(2, '0')}</span>
+            <div class="who">
+                <h3>${esc(c.name)}</h3>
+                <p>${esc(c.blurb)}</p>
+                <div class="sites">${sites(c)}</div>
+            </div>
+            <div class="volume">
+                <span class="count">${num(c.totalComments)}</span>
+                <span class="unit">comments</span>
+                <span class="bar"><span style="--w:${barWidth(c.totalComments)}%"></span></span>
+            </div>
+            <a class="top" href="${esc(c.page.url)}" target="_blank" rel="noopener">
+                <span class="label">Most discussed</span>
+                <span class="title">${esc(c.page.title)}</span>
+                <span class="meta">${plural(c.page.comments, 'comment')} &#8599;</span>
+            </a>
+        </li>`;
 
-const row = c => `
-                <tr>
-                    <td class="report-name">
-                        <span class="font_semibold">${esc(c.name)}</span>
-                        ${c.page ? `<span class="report-muted">${esc(c.blurb)}</span>` : ''}
-                        <span class="report-sites">${sites(c)}</span>
-                    </td>
-                    <td class="report-top" data-label="Most discussed">
-                        ${pageCell(c)}
-                    </td>
-                    <td class="ta-right report-count" data-label="Comments">${num(c.totalComments)}</td>
-                </tr>`;
+const card = (c, i) => `
+        <li class="card" style="--i:${i}">
+            <div class="card-head">
+                <h3>${esc(c.name)}</h3>
+                <span class="count">${num(c.totalComments)}<span class="unit"> comments</span></span>
+            </div>
+            <p>${esc(c.blurb)}</p>
+            <div class="sites">${sites(c)}</div>
+            ${c.page ? `<a class="top compact" href="${esc(c.page.url)}" target="_blank" rel="noopener"><span class="label">Most discussed</span><span class="title">${esc(c.page.title)}</span><span class="meta">${plural(c.page.comments, 'comment')} &#8599;</span></a>` : ''}
+        </li>`;
 
-const section = g => {
+const section = (g, n) => {
     const list = customers.filter(c => c.group === g.key);
-    const groupTotal = list.reduce((s, c) => s + c.totalComments, 0);
-    const middleCol = g.key === 'product' ? 'How they use it' : 'Most discussed page';
+    const body = g.key === 'product'
+        ? `<ul class="cards">${list.map(card).join('')}\n    </ul>`
+        : `<ol class="ledger">${list.map(row).join('')}\n    </ol>`;
     return `
-    <section class="report-group container" id="${g.key}">
-        <div class="report-group-head">
-            <h2 class="text_3xl font_bold color_rich_black leading_125">${esc(g.title)}</h2>
-            <p class="text_md leading_150 report-muted">${esc(g.lede)} ${list.length} teams, ${num(groupTotal)} comments.</p>
-        </div>
-        <table class="pretty-table report-table">
-            <thead>
-                <tr>
-                    <th>${g.nameCol}</th>
-                    <th>${middleCol}</th>
-                    <th class="ta-right">Comments</th>
-                </tr>
-            </thead>
-            <tbody>${list.map(row).join('')}
-            </tbody>
-        </table>
-    </section>`;
+<section class="group" id="${g.key}">
+    <header class="group-head">
+        <span class="group-num">0${n + 1}</span>
+        <h2>${esc(g.title)}</h2>
+        <span class="group-count">${list.length} teams &middot; ${num(list.reduce((s, c) => s + c.totalComments, 0))} comments</span>
+        <p>${esc(g.lede)}</p>
+    </header>
+    ${body}
+</section>`;
 };
 
-const html = `<!DOCTYPE html>
-<html lang="en" dir="ltr">
+const html = `<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="robots" content="noindex"/>
-    <title>FastComments - Tech Sites</title>
-    <link rel="shortcut icon" href="/images/favicon.ico"/>
-    <link rel="stylesheet" href="/stylesheets/public_v2/examples.css"/>
+    <title>Tech teams on FastComments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./styles.css"/>
 </head>
-<body tabindex="0">
-<script>
-    // Same theme source as the marketing site: the visitor's saved choice, light otherwise.
-    (function () {
-        let isDarkMode = false;
-        try {
-            isDarkMode = window.localStorage.getItem('fastcomments-theme') === 'dark';
-        } catch (e) {
-            console.error(e);
-        }
-        document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-        document.body.classList.toggle('dark', isDarkMode);
-    })();
-</script>
-<nav class="report-nav">
-    <div class="container report-nav-inner">
-        <a aria-label="FastComments" href="/">
-            <img src="/images/public_v2/webp/logo.webp" alt="FastComments" width="266" height="31" class="report-logo show_light"/>
-            <img src="/images/public_v2/webp/logo-dark.webp" alt="FastComments" width="266" height="31" class="report-logo show_dark"/>
-        </a>
-        <a href="/examples" class="ff_manrope color_rich_black text_lg leading_150 transition_03 report-nav-link">Live Examples</a>
-    </div>
-</nav>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<main class="page">
+    <nav class="masthead">
+        <a class="logo" href="https://fastcomments.com" aria-label="FastComments"><img src="/images/public_v2/webp/logo-dark.webp" alt="FastComments" width="266" height="31"/></a>
+        <span class="edition">Customer field report &middot; October 2026</span>
+    </nav>
 
-<section class="hero_text_section">
-    <div class="hero_text_background">
-        <div class="container">
-            <div class="hero_text_content">
-                <h1 class="text_custom_5xl font_bold color_rich_black leading_125">
-                    <span class="font_light leading_125">FastComments </span>Tech Sites
-                </h1>
-                <p class="text_lg hero_text_description font_normal leading_150 text_center color_rich_black max_w_500">
-                    Developer publishers, software products and fintech teams run their discussions on FastComments. Here is who they are, and the threads their readers talk about most.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<main class="report-page">
-    <div class="container">
-        <dl class="report-stats">
-            <div><dt class="report-muted">Comments</dt><dd class="ff_manrope font_bold color_rich_black">${num(totalComments)}</dd></div>
-            <div><dt class="report-muted">Teams</dt><dd class="ff_manrope font_bold color_rich_black">${customers.length}</dd></div>
-            <div><dt class="report-muted">Largest community</dt><dd class="ff_manrope font_bold color_rich_black">${esc(customers[0].name)}</dd></div>
+    <header class="hero">
+        <h1>FastComments <em>Tech Sites</em></h1>
+        <p class="lede">Developer publishers, software products and fintech teams run their discussions on FastComments. Here is who they are, and the threads their readers could not leave alone.</p>
+        <dl class="stats">
+            <div><dt>Comments</dt><dd>${num(totalComments)}</dd></div>
+            <div><dt>Teams</dt><dd>${customers.length}</dd></div>
+            <div><dt>Largest community</dt><dd>${esc(customers[0].name)}</dd></div>
         </dl>
-    </div>
+        <ul class="jump">
+            ${GROUPS.map((g, n) => `<li><a href="#${g.key}"><span>0${n + 1}</span>${esc(g.title)}</a></li>`).join('\n            ')}
+        </ul>
+    </header>
 ${GROUPS.map(section).join('\n')}
 
-    <section class="container report-cta text_center">
-        <p class="text_md leading_150 report-muted">Comment totals are lifetime counts across each customer's sites, as of October 29, 2026.</p>
-        <div class="d_inline_block mt_32">
-            <a href="/auth/signup" class="action_button transition_03 cursor_pointer ff_manrope font_semibold color_ghost_white_100 leading_125 text_lg">Start Free 30 Day Trial ${ARROW}</a>
-        </div>
-    </section>
+    <footer class="foot">
+        <p>Comment totals are lifetime counts across each customer's sites, as of October 29, 2026. Links open the live page.</p>
+        <a href="https://fastcomments.com" class="brand">fastcomments.com</a>
+    </footer>
 </main>
 </body>
 </html>
