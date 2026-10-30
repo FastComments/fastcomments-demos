@@ -93,7 +93,7 @@ const html = `<!doctype html>
     </nav>
 
     <header class="hero">
-        <h1>Where technical audiences <em>talk back.</em></h1>
+        <h1>FastComments <em>Tech Sites</em></h1>
         <p class="lede">Developer publishers, software products and fintech teams run their discussions on FastComments. Here is who they are, and the threads their readers could not leave alone.</p>
         <dl class="stats">
             <div><dt>Comments</dt><dd>${num(totalComments)}</dd></div>
