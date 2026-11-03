@@ -42,7 +42,6 @@ img { max-width: 100%; }
 }
 .fc-demo-bar img { flex: none; width: 26px; height: 30px; }
 .fc-demo-bar p { flex: 1 1 420px; margin: 0; line-height: 1.45; }
-.fc-demo-bar code { font-size: 15px; }
 .fc-demo-bar label { font-weight: 700; }
 .fc-demo-bar select {
     font: inherit;
