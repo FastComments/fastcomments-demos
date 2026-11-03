@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-newsuk-thesun",
+  "description": "Static copy of a thesun.co.uk article with the FastComments widget in place of OpenWeb (served at /tmp_demos/newsuk-thesun)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
