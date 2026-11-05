@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-sounderatheart",
+  "description": "Static copy of a sounderatheart.com gamethread with the FastComments widget in place of Coral (served at /tmp_demos/sounderatheart)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

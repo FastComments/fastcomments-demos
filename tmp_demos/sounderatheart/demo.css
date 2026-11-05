@@ -1,0 +1,52 @@
+/* Demo-only additions on top of the copied Tripoli theme. */
+.fc-demo-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 12px 24px;
+    /* Stays light in both color modes so the FastComments mark stays legible. */
+    background: #F5F5F5;
+    color: #111;
+    border-bottom: 1px solid #D9D9D9;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: 15px;
+}
+.fc-demo-bar img { flex: none; width: 26px; height: 30px; }
+.fc-demo-bar p { flex: 1 1 420px; margin: 0; line-height: 1.45; }
+.fc-demo-bar__controls { flex: 0 1 auto; display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; }
+.fc-demo-bar label { font-weight: 700; }
+.fc-demo-bar select {
+    width: auto;
+    font: inherit;
+    padding: 6px 10px;
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    background: #FFF;
+    color: inherit;
+}
+
+.sah-member { display: inline-flex; align-items: center; gap: 8px; }
+.sah-member img { border-radius: 50%; }
+
+.sah-comment-count {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-secondary);
+    font-family: Inter, system-ui, sans-serif;
+    text-decoration: none;
+}
+.sah-comment-count:hover { text-decoration: underline; }
+
+.sah-center { text-align: center; }
+
+.sah-comments {
+    max-width: var(--content-width);
+    margin: 0 auto var(--space-48, 48px);
+    padding: 0 var(--grid-margin, 16px);
+}
+.sah-comments--chat #fastcomments-widget { height: 640px; }
+
+@media (max-width: 600px) {
+    .fc-demo-bar { padding: 12px 16px; }
+}

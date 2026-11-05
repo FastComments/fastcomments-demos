@@ -50,6 +50,8 @@ const TMP_DEMOS = [
     { slug: 'footballco-goal', deps: [] },
     // Copy of a thesun.co.uk article with our widget in place of OpenWeb (News UK sales demo); static, no deps.
     { slug: 'newsuk-thesun', deps: [] },
+    // Copy of a sounderatheart.com gamethread with our widget in place of Coral (Sounder at Heart sandbox); static, no deps.
+    { slug: 'sounderatheart', deps: [] },
     // Showcase of tech-oriented customers and their most discussed pages; static, rendered from customers.json.
     { slug: 'tech-customers', deps: [] },
     // Showcase of news publisher customers and their most discussed pages; static, rendered from customers.json.
