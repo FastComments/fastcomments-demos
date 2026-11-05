@@ -1,0 +1,10 @@
+{
+  "name": "fastcomments-tmp-demo-news-customers",
+  "description": "Static customer showcase of news publishers on FastComments and their most discussed pages (served at /tmp_demos/news-customers)",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

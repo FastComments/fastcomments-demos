@@ -52,6 +52,8 @@ const TMP_DEMOS = [
     { slug: 'newsuk-thesun', deps: [] },
     // Showcase of tech-oriented customers and their most discussed pages; static, rendered from customers.json.
     { slug: 'tech-customers', deps: [] },
+    // Showcase of news publisher customers and their most discussed pages; static, rendered from customers.json.
+    { slug: 'news-customers', deps: [] },
 ];
 
 // Make every nested `npm ci` retry transient registry errors (ECONNRESET etc).

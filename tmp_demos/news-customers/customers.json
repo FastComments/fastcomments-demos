@@ -1,0 +1,235 @@
+[
+  {
+    "group": "news",
+    "name": "N1",
+    "blurb": "Independent news network across Serbia, Slovenia, Croatia and Bosnia. Part of United Cloud.",
+    "sites": [
+      "n1info.rs",
+      "n1info.si",
+      "n1info.hr",
+      "n1info.ba"
+    ],
+    "totalComments": 2276447,
+    "page": {
+      "url": "https://n1info.rs/vesti/vucic-potpisao-saglasnost-za-vracanje-obaveznog-vojnog-roka/",
+      "title": "Vučić potpisao saglasnost za vraćanje obaveznog vojnog roka",
+      "comments": 911
+    }
+  },
+  {
+    "group": "sport",
+    "name": "Sport Klub",
+    "blurb": "Sports network and news across Serbia, Slovenia and Croatia. Part of United Cloud.",
+    "sites": [
+      "sportklub.rs",
+      "sportklub.si",
+      "sportklub.hr"
+    ],
+    "totalComments": 742180,
+    "page": {
+      "url": "https://sportklub.rs/kosarka/kosarka-ostalo/saostenje-delije-sever-telegram-kanal-jednom-ste-nas-navukli-na-saku-stisnutu/",
+      "title": "Novo saopštenje Delija: Jednom ste nas prevarili na stisnutu šaku",
+      "comments": 1452
+    }
+  },
+  {
+    "group": "news",
+    "name": "Nova",
+    "blurb": "Serbian news portal, with the Zadovoljna lifestyle title. Part of United Cloud.",
+    "sites": [
+      "nova.rs",
+      "zadovoljna.nova.rs"
+    ],
+    "totalComments": 556422,
+    "page": {
+      "url": "https://nova.rs/vesti/drustvo/gradjanima-masovno-stizu-pozivi-za-vojsku-kolike-su-kazne-ako-se-ne-odazovete/",
+      "title": "Građanima masovno stižu pozivi za Vojsku: Kolike su kazne ako se ne odazovete",
+      "comments": 488
+    }
+  },
+  {
+    "group": "news",
+    "name": "The Online Citizen",
+    "blurb": "Singapore news and current affairs",
+    "sites": [
+      "theonlinecitizen.com",
+      "news.theonlinecitizen.com",
+      "gutzy.asia"
+    ],
+    "totalComments": 515660,
+    "page": {
+      "url": "https://www.theonlinecitizen.com/2017/03/17/suggestion-of-floating-nuclear-power-plants-belittles-the-consequence-of-catastrophic-nuclear-accident-for-singapore/",
+      "title": "Suggestion of floating nuclear power plants belittles the consequence of catastrophic nuclear accident for Singapore",
+      "comments": 1567
+    }
+  },
+  {
+    "group": "news",
+    "name": "The South African",
+    "blurb": "South African news for readers at home and abroad",
+    "sites": [
+      "thesouthafrican.com"
+    ],
+    "totalComments": 99875,
+    "page": {
+      "url": "https://www.thesouthafrican.com/news/donald-trump-claims-world-not-secure-until-us-owns-greenland/",
+      "title": "Donald Trump claims world 'not secure' until US owns Greenland",
+      "comments": 192
+    }
+  },
+  {
+    "group": "vertical",
+    "name": "AdvisorHub",
+    "blurb": "News and insights for financial advisors",
+    "sites": [
+      "advisorhub.com"
+    ],
+    "totalComments": 82879,
+    "page": {
+      "url": "https://www.advisorhub.com/ex-wells-fargo-broker-accuses-firm-of-whistleblower-retaliation-in-note-dispute/",
+      "title": "Ex-Wells Fargo Broker Accuses Firm of Whistleblower Retaliation in Note Dispute",
+      "comments": 862
+    }
+  },
+  {
+    "group": "vertical",
+    "name": "EconoTimes",
+    "blurb": "Global economic and markets news",
+    "sites": [
+      "econotimes.com"
+    ],
+    "totalComments": 10266,
+    "page": {
+      "url": "https://www.econotimes.com/Predictive-policing-AI-is-on-the-rise--making-it-accountable-to-the-public-could-curb-its-harmful-effects-1709489",
+      "title": "Predictive policing AI is on the rise − making it accountable to the public could curb its harmful effects",
+      "comments": 94
+    }
+  },
+  {
+    "group": "sport",
+    "name": "SportParma",
+    "blurb": "Daily sports paper for Parma",
+    "sites": [
+      "sportparma.com"
+    ],
+    "totalComments": 8588,
+    "page": {
+      "url": "https://sportparma.com/parma-calcio/il-commento-il-tardini-e-diventato-terra-di-conquista-unumiliazione-senza-attenuanti.html",
+      "title": "IL COMMENTO: il Tardini è diventato terra di conquista, un’umiliazione senza attenuanti",
+      "comments": 36
+    }
+  },
+  {
+    "group": "vertical",
+    "name": "Value Added Resource",
+    "blurb": "Independent reporting on eBay, Amazon, Etsy and other marketplaces",
+    "sites": [
+      "valueaddedresource.net"
+    ],
+    "totalComments": 4248,
+    "page": {
+      "url": "https://www.valueaddedresource.net/etsy-responds-to-seller-concerns-about-payment-reserves/",
+      "title": "Etsy Responds To Seller Concerns About Payment Reserves",
+      "comments": 180
+    }
+  },
+  {
+    "group": "news",
+    "name": "SAPeople",
+    "blurb": "Worldwide South African news and community",
+    "sites": [
+      "sapeople.com"
+    ],
+    "totalComments": 2221,
+    "page": {
+      "url": "https://www.sapeople.com/news/another-blow-for-elon-musks-starlink-in-south-africa-icase-tech-news/",
+      "title": "Another blow for Elon Musk's Starlink in South Africa",
+      "comments": 27
+    }
+  },
+  {
+    "group": "vertical",
+    "name": "Olive Oil Times",
+    "blurb": "Trade news for the olive oil industry, in several languages",
+    "sites": [
+      "oliveoiltimes.com"
+    ],
+    "totalComments": 2151,
+    "page": {
+      "url": "https://www.oliveoiltimes.com/opinion/gundry-olive-oil-review/89570",
+      "title": "Dr. Gundry’s Olive Oil Review",
+      "comments": 179
+    }
+  },
+  {
+    "group": "news",
+    "name": "Gaudium Press",
+    "blurb": "Catholic news agency, Portuguese and Spanish editions",
+    "sites": [
+      "gaudiumpress.org",
+      "es.gaudiumpress.org"
+    ],
+    "totalComments": 151,
+    "page": {
+      "url": "https://es.gaudiumpress.org/content/ayuda-a-la-iglesia-necesitada-alerta-que-200-profesores-cristianos-perderian-empleos-en-jerusalen/",
+      "title": "Ayuda a la Iglesia Necesitada alerta que 200 profesores cristianos perderían empleos en Jerusalén",
+      "comments": 5
+    }
+  },
+  {
+    "group": "sport",
+    "name": "SportsTalk ATL",
+    "blurb": "Atlanta sports news and analysis",
+    "sites": [
+      "sportstalkatl.com"
+    ],
+    "totalComments": 121,
+    "page": {
+      "url": "https://sportstalkatl.com/teams-that-could-blow-it-up-and-a-braves-trade-target-from-each-al/",
+      "title": "Teams that could blow it up and a Braves trade target from each (AL)",
+      "comments": 6
+    }
+  },
+  {
+    "group": "vertical",
+    "name": "Auto Moto Revija",
+    "blurb": "Official magazine of the Auto-Moto Association of Serbia",
+    "sites": [
+      "automotorevija.rs"
+    ],
+    "totalComments": 85,
+    "page": {
+      "url": "https://www.automotorevija.rs/rubrike/byd-dolphin-surf-mali-ev-koji-menja-pravila-igre",
+      "title": "Test BYD Dolphin Surf EV",
+      "comments": 8
+    }
+  },
+  {
+    "group": "vertical",
+    "name": "CINEMORE",
+    "blurb": "Japanese film magazine",
+    "sites": [
+      "cinemore.jp"
+    ],
+    "totalComments": 77,
+    "page": {
+      "url": "https://cinemore.jp/jp/news-feature/3389/article_p2.html",
+      "title": "「第2回新潟国際アニメーション映画祭」審査員長 ノラ・トゥーミー アニメ業界を目指す人こそ映画祭に来て欲しい",
+      "comments": 4
+    }
+  },
+  {
+    "group": "news",
+    "name": "Głos24",
+    "blurb": "Regional news from Kraków and Małopolska",
+    "sites": [
+      "glos24.pl"
+    ],
+    "totalComments": 28,
+    "page": {
+      "url": "https://glos24.pl/roszady-w-archidiecezji-krakowskiej-cztery-parafie-zmieniaja-proboszczow",
+      "title": "Roszady w archidiecezji krakowskiej. Cztery parafie zmieniają proboszczów",
+      "comments": 3
+    }
+  }
+]
